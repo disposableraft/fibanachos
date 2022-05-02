@@ -1,6 +1,5 @@
 import redis
 from flask import Flask
-import json
 import lib
 
 app = Flask(__name__)

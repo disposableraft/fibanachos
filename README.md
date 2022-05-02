@@ -1,7 +1,8 @@
-
-![screenshot](./screenshot.png)
+# Fibanachos: Flask, Redis and Kubernetes Example
 
 In this example I build a small web app using Flask, Redis and Kubernetes. The app displays pages of emojis based on the Fibinacci sequence. For example, navigating to http://localhost:8000/10 will display 55 emojis. Each emoji is either a tree or a mushroom, depending on whether its index is a prime number.
+
+![screenshot](./screenshot.png)
 
 It's assumed that minikube and kubectl are installed.
 

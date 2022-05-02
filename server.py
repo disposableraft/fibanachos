@@ -4,6 +4,7 @@ import lib
 
 app = Flask(__name__)
 
+# If running with docker compose, change the host to "redis" or remove it entirely.
 rc = redis.Redis(host='redis.default.svc.cluster.local', port=6379, decode_responses=True)
 f = lib.Fibonacci(rc)
 pr = lib.Prime(rc)

@@ -12,5 +12,5 @@ spec:
     targetPort: 6379
     protocol: TCP
   selector:
-    io.kompose.service: redis
+    app: redis
   type: ClusterIP

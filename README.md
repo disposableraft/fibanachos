@@ -4,7 +4,7 @@ It's assumed that minikube and kubectl are installed.
 
 ## Instructions
 
-Start Minikube and confirm that it's running.
+Start Minikube and confirm that it's running. The following commands assume 
 
 ```shell
 $ minikube start
@@ -20,7 +20,7 @@ $ minikube image build -t web:0.0.1 .
 Apply our deployments and service.
 
 ```shell
-$ kubectl apply -f web-service.yaml,redis-deployment.yaml,web-deployment.yaml,redis-service.yaml,redis-config.yaml
+$ kubectl apply -f kubernetes
 ```
 
 Confirm services.
@@ -47,3 +47,33 @@ If all is green, then forward the port.
 $ kubectl port-forward service/web 8000 
 ```
 
+Inspect logs.
+
+```shell
+$ kubectl get pods
+
+# NAME           READY   STATUS    RESTARTS      AGE
+# redis-[hash]   1/1     Running   0             110s
+# web-[hash]     0/1     Error     4 (58s ago)   110s
+
+$ kubectl logs web-[hash]
+```
+
+Use the Redis shell.
+
+```shell
+$ kubectl exec -it redis-[hash] -- redis-cli
+```
+
+Delete the deployments and services.
+
+```shell
+$ kubectl delete deployments redis web
+$ kubectl delete services redis web
+```
+
+Delete the Docker image from Minikube.
+
+```shell
+minikube image rm web:0.0.1
+```
